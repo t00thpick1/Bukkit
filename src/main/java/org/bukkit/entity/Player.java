@@ -683,7 +683,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * Gets the number that health is scaled to for the client.
      *
      * @return the number that health would be scaled to for the client if
-     * HealthScaling is set to true
+     *     HealthScaling is set to true
      * @see Player#setHealthScale(double)
      * @see Player#setHealthScaled(boolean)
      */
