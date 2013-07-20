@@ -653,18 +653,37 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * scale from 0-20.
      *
      * @return if client health display is scaled
-     * @see Player#setScaledHealth(boolean)
+     * @see Player#setHealthScaled(boolean)
      */
-    public boolean isScaledHealth();
+    public boolean isHealthScaled();
 
     /**
      * Sets if the client is displayed a 'scaled' health, that is, health on a
      * scale from 0-20.
      * <p>
      * Displayed health follows a simple formula <code>displayedHealth =
-     * getHealth() / getMaxHealth() * 20.0D</code>.
+     * getHealth() / getMaxHealth() * healthScale</code>.
      *
      * @param scale if the client health display is scaled
      */
-    public void setScaleHealth(boolean scale);
+    public void setHealthScaled(boolean scale);
+
+    /**
+     * Sets the number to scale health to for the client, this will also set HealthScaled to true.
+     * <p>
+     * Displayed health follows a simple formula <code>displayedHealth =
+     * getHealth() / getMaxHealth() * healthScale</code>.
+     *
+     * @param scale the number to scale health to
+     */
+    public void setHealthScale(double scale);
+
+    /**
+     * Gets the number that health is scaled to for the client.
+     *
+     * @return the number that health is scaled to for the client if HealthScaling is set to true
+     * @see Player#setHealthScale(boolean)
+     * @see Player#setHealthScaled(boolean)
+     */
+    public double getHealthScale();
 }
