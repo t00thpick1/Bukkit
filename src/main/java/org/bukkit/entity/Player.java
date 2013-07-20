@@ -662,7 +662,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * scale from 0-20.
      * <p>
      * Displayed health follows a simple formula <code>displayedHealth =
-     * getHealth() / getMaxHealth() * healthScale</code>.
+     * getHealth() / getMaxHealth() * getHealthScale()</code>.
      *
      * @param scale if the client health display is scaled
      */
@@ -673,7 +673,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * HealthScaled to true.
      * <p>
      * Displayed health follows a simple formula <code>displayedHealth =
-     * getHealth() / getMaxHealth() * healthScale</code>.
+     * getHealth() / getMaxHealth() * getHealthScale()</code>.
      *
      * @param scale the number to scale health to
      */
