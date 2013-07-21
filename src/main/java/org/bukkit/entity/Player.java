@@ -669,7 +669,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void setHealthScaled(boolean scale);
 
     /**
-     * Sets the number to scale health to for the client, this will also 
+     * Sets the number to scale health to for the client; this will also
      * {@link #setHealthScaled(boolean) setHealthScaled(true)}.
      * <p>
      * Displayed health follows a simple formula <code>displayedHealth =
