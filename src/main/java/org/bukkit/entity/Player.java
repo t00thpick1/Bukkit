@@ -650,7 +650,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Gets if the client is displayed a 'scaled' health, that is, health on a
-     * scale from 0-20.
+     * scale from 0-{@link #getHealthScale() getHealthScale()}.
      *
      * @return if client health display is scaled
      * @see Player#setHealthScaled(boolean)
@@ -659,7 +659,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Sets if the client is displayed a 'scaled' health, that is, health on a
-     * scale from 0-20.
+     * scale from 0-{@link #getHealthScale() getHealthScale()}.
      * <p>
      * Displayed health follows a simple formula <code>displayedHealth =
      * getHealth() / getMaxHealth() * getHealthScale()</code>.
@@ -670,14 +670,17 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
 
     /**
      * Sets the number to scale health to for the client, this will also set 
-     * HealthScaled to true.
+     * {@link #setHealthScaled(boolean) setHealthScaled(true)}.
      * <p>
      * Displayed health follows a simple formula <code>displayedHealth =
      * getHealth() / getMaxHealth() * getHealthScale()</code>.
      *
      * @param scale the number to scale health to
+     * @throws IllegalArgumentException if scale is &lt;0
+     * @throws IllegalArgumentException if scale is {@link Double#NaN}
+     * @throws IllegalArgumentException if scale is too high
      */
-    public void setHealthScale(double scale);
+    public void setHealthScale(double scale) throws IllegalArgumentException;
 
     /**
      * Gets the number that health is scaled to for the client.
