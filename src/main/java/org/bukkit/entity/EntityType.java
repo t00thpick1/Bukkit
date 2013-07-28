@@ -27,6 +27,10 @@ public enum EntityType {
      */
     EXPERIENCE_ORB("XPOrb", ExperienceOrb.class, 2),
     /**
+     * A leash on a fencepost.
+     */
+    LEASH("LeashKnot", Leash.class, 8),
+    /**
      * A painting on a wall.
      */
     PAINTING("Painting", Painting.class, 9),
