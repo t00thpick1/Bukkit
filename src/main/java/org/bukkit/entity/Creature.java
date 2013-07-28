@@ -39,9 +39,8 @@ public interface Creature extends LivingEntity {
     /**
      * Unleashes this entity
      *
-     * @param dropLeash determines whether to drop the leash as an item
      */
-    public void unleash(boolean dropLeash);
+    public void unleash();
 
     /**
      * Leashes this entity

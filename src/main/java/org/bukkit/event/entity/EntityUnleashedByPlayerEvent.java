@@ -29,6 +29,6 @@ public class EntityUnleashedByPlayerEvent extends EntityUnleashedEvent implement
     }
 
     public void setCancelled(boolean cancel) {
-        this.cancelled  = cancel;
+        this.cancelled = cancel;
     }
 }
