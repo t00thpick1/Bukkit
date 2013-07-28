@@ -15,6 +15,11 @@ public class EntityUnleashedByPlayerEvent extends EntityUnleashedEvent implement
         this.player = player;
     }
 
+    /**
+     * Returns the player who is unleashing the entity
+     *
+     * @return The player
+     */
     public Player getPlayer() {
         return player;
     }

@@ -12,7 +12,12 @@ public class EntityUnleashedEvent extends EntityEvent {
         this.reason = reason;
     }
 
-    public UnleashReason getUnleashReason() {
+    /**
+     * Returns the reason for the unleashing
+     *
+     * @return The reason
+     */
+    public UnleashReason getReason() {
         return reason;
     }
 
@@ -22,10 +27,22 @@ public class EntityUnleashedEvent extends EntityEvent {
     }
     
     public enum UnleashReason {
+        /**
+         * When the entity's leashholder has died, and so is unleashed
+         */
         HOLDER_DIED,
-        HOLDER_NOT_FOUND,
+        /**
+         * When the entity's leashholder attemptes to unleash it
+         */
         PLAYER_UNLEASH,
+        /**
+         * When the entity's leashholder is more than 10 blocks away
+         */
         DISTANCE,
-        PLUGIN;
+        /**
+         * When a plugin unleashes the entity
+         */
+        PLUGIN,
+        UNKNOWN;
     }
 }
