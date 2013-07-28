@@ -5,6 +5,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 
+/**
+ * Called when a creature is leashed
+ */
 public class EntityLeashedEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private Entity leashHolder;
@@ -37,6 +40,10 @@ public class EntityLeashedEvent extends EntityEvent implements Cancellable {
 
     @Override
     public HandlerList getHandlers() {
+        return handlers;
+    }
+
+    public static HandlerList getHandlerList() {
         return handlers;
     }
 

@@ -3,10 +3,11 @@ package org.bukkit.event.entity;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
 
+/**
+ * Called when a creature is no longer leashed due to a player's action
+ */
 public class EntityUnleashedByPlayerEvent extends EntityUnleashedEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
     private Player player;
     private boolean cancelled = false;
 
@@ -22,11 +23,6 @@ public class EntityUnleashedByPlayerEvent extends EntityUnleashedEvent implement
      */
     public Player getPlayer() {
         return player;
-    }
-
-    @Override
-    public HandlerList getHandlers() {
-        return handlers;
     }
 
     public boolean isCancelled() {
