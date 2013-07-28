@@ -46,10 +46,6 @@ public class EntityUnleashedEvent extends EntityEvent {
          * When the entity's leashholder is more than 10 blocks away
          */
         DISTANCE,
-        /**
-         * When a plugin unleashes the entity
-         */
-        PLUGIN,
         UNKNOWN;
     }
 }

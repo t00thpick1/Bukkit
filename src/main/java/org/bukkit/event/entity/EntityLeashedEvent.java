@@ -30,7 +30,7 @@ public class EntityLeashedEvent extends EntityEvent implements Cancellable {
     }
 
     /**
-     * Returns the player who is leashing the entity, or null if done by a plugin
+     * Returns the player who is leashing the entity
      *
      * @return The player
      */
