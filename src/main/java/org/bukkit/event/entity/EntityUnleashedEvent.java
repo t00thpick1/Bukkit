@@ -4,7 +4,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.event.HandlerList;
 
 /**
- * Called when a creature is no longer leashed
+ * Called when an entity is no longer leashed
  */
 public class EntityUnleashedEvent extends EntityEvent {
     private static final HandlerList handlers = new HandlerList();
@@ -35,9 +35,9 @@ public class EntityUnleashedEvent extends EntityEvent {
 
     public enum UnleashReason {
         /**
-         * When the entity's leashholder has died, and so is unleashed
+         * When the entity's leashholder has died or logged out, and so is unleashed
          */
-        HOLDER_DIED,
+        HOLDER_GONE,
         /**
          * When the entity's leashholder attempts to unleash it
          */

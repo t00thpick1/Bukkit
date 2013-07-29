@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 
 /**
- * Called when a creature is no longer leashed due to a player's action
+ * Called when an entity is no longer leashed due to a player's action
  */
 public class EntityUnleashedByPlayerEvent extends EntityUnleashedEvent implements Cancellable {
     private Player player;
