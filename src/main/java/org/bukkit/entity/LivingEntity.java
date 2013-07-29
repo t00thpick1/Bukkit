@@ -369,4 +369,31 @@ public interface LivingEntity extends Entity, Damageable {
      * @return if the custom name is displayed
      */
     public boolean isCustomNameVisible();
+
+    /**
+     * Returns whether the entity is currently leashed
+     *
+     * @return whether the entity is leashed
+     */
+    public boolean isLeashed();
+
+    /**
+     * Gets the entity that is currently leading this entity
+     *
+     * @return the entity holding the leash, or null if not leashed
+     */
+    public Entity getLeashHolder();
+
+    /**
+     * Unleashes this entity
+     *
+     */
+    public void unleash();
+
+    /**
+     * Leashes this entity
+     *
+     * @param holder the entity to leash this entity to, must be a Player or Leash
+     */
+    public void leash(LivingEntity holder);
 }
