@@ -398,5 +398,5 @@ public interface LivingEntity extends Entity, Damageable {
      * @param holder the entity to leash this entity to
      * @return whether the operation was successful
      */
-    public boolean leash(LivingEntity holder);
+    public boolean leashTo(LivingEntity holder);
 }
