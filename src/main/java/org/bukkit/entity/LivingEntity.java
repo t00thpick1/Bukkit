@@ -392,8 +392,11 @@ public interface LivingEntity extends Entity, Damageable {
 
     /**
      * Leashes this entity
+     * <p>
+     * This method has no effect on EnderDragons, Withers, or Bats
      *
-     * @param holder the entity to leash this entity to, must be a Player or Leash
+     * @param holder the entity to leash this entity to
+     * @return whether the operation was successful
      */
-    public void leash(LivingEntity holder);
+    public boolean leash(LivingEntity holder);
 }
