@@ -11,8 +11,6 @@ public interface AttributeModifier {
      */
     public AttributeIdentifier getIdentifier();
 
-    public String getName();
-
     /**
      * Gets the value the attribute is modified with
      * 

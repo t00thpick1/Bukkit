@@ -139,12 +139,11 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
      * Creates and adds an attribute modifier with the supplied data to this item meta.
      *
      * @param identifier the attribute identifier
-     * @param name the name of the modifier
      * @param value the value of the modifier
      * @param type the type of attribute modification
      * @return the added AttributeModifier
      */
-    public AttributeModifier addAttributeModifier(AttributeIdentifier identifier, String name, double value, AttributeModifierType type);
+    public AttributeModifier addAttributeModifier(AttributeIdentifier identifier, double value, AttributeModifierType type);
 
     /**
      * Removes the specified attribute modifier from this item meta.
