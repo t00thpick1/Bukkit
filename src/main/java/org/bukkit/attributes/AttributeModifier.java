@@ -25,5 +25,5 @@ public interface AttributeModifier {
      * 
      * @return an {@link AttributeModifierType}
      */
-    public AttributeModifierType getType();
+    public AttributeModifierType getModifierType();
 }
