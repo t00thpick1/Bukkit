@@ -3,6 +3,7 @@ package org.bukkit.inventory.meta;
 import java.util.List;
 import java.util.Map;
 
+import org.bukkit.attributes.AttributeModifier;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.enchantments.Enchantment;
 
@@ -114,6 +115,35 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
     * @return true if the enchantment conflicts, false otherwise
     */
     boolean hasConflictingEnchant(Enchantment ench);
+
+    /**
+     * Checks for the existence of any attribute modifiers.
+     *
+     * @return true if an attribute modifier exists on this meta
+     */
+    boolean hasAttributeModifiers();
+
+    /**
+     * Adds the specified attribute modifier to this item meta.
+     *
+     * @param modifier the {@link AttributeModifier} to add
+     */
+    public void addAttributeModifier(AttributeModifier modifier);
+
+    /**
+     * Removes the specified attribute modifier from this item meta.
+     *
+     * @param modifier the {@link AttributeModifier} to remove
+     */
+    public void removeAttributeModifier(AttributeModifier modifier);
+
+    /**
+     * Returns a copy the attribute modifiers in this ItemMeta.<br />
+     * Returns an empty list if none.
+     *
+     * @return An immutable list of the attribute modifiers
+     */
+    public List<AttributeModifier> getAttributeModifiers();
 
     @SuppressWarnings("javadoc")
     ItemMeta clone();
