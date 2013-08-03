@@ -2,10 +2,9 @@ package org.bukkit.inventory.meta;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
-import org.bukkit.attributes.AttributeIdentifier;
 import org.bukkit.attributes.AttributeModifier;
-import org.bukkit.attributes.AttributeModifierType;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.enchantments.Enchantment;
 
@@ -129,39 +128,24 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
      * Adds the specified attribute modifier to this item meta.
      *
      * @param modifier the {@link AttributeModifier} to add
-     * @throws IllegalArgumentException if supplying an AttributeModifier not
-     * from {@link #addAttributeModifier(AttributeIdentifier, String, double, AttributeModifierType)}
-     * or {@link #getAttributeModifiers()}
      */
-    public void addAttributeModifier(AttributeModifier modifier) throws IllegalArgumentException;
+    public UUID addAttributeModifier(AttributeModifier modifier);
 
     /**
-     * Creates and adds an attribute modifier with the supplied data to this item meta.
+     * Removes the attribute modifier associated with the specified UUID from this item meta.
      *
-     * @param identifier the attribute identifier
-     * @param value the value of the modifier
-     * @param type the type of attribute modification
-     * @return the added AttributeModifier
+     * @param uuid the UUID of the modifier to remove
+     * @return the AttributeModifier removed
      */
-    public AttributeModifier addAttributeModifier(AttributeIdentifier identifier, double value, AttributeModifierType type);
-
-    /**
-     * Removes the specified attribute modifier from this item meta.
-     *
-     * @param modifier the {@link AttributeModifier} to remove
-     * @throws IllegalArgumentException if supplying an AttributeModifier not
-     * from {@link #addAttributeModifier(AttributeIdentifier, String, double, AttributeModifierType)}
-     * or {@link #getAttributeModifiers()}
-     */
-    public void removeAttributeModifier(AttributeModifier modifier) throws IllegalArgumentException;
+    public AttributeModifier removeAttributeModifier(UUID uuid);
 
     /**
      * Returns a copy the attribute modifiers in this ItemMeta.<br />
-     * Returns an empty list if none.
+     * Returns an empty map if none.
      *
-     * @return An immutable list of the attribute modifiers
+     * @return An immutable map of the attribute modifiers
      */
-    public List<AttributeModifier> getAttributeModifiers();
+    public Map<UUID, AttributeModifier> getAttributeModifiers();
 
     @SuppressWarnings("javadoc")
     ItemMeta clone();
