@@ -70,9 +70,7 @@ public interface Damageable extends Entity {
      * Gets the maximum health this entity has.
      *
      * @return Maximum health
-     * @deprecated use Attributes instead
      */
-    @Deprecated
     double getMaxHealth();
 
     /**
@@ -91,9 +89,7 @@ public interface Damageable extends Entity {
      * Note: An entity with a health bar ({@link Player}, {@link EnderDragon}, {@link Wither}, etc...} will have their bar scaled accordingly.
      *
      * @param health amount of health to set the maximum to
-     * @deprecated use Attributes instead
      */
-    @Deprecated
     void setMaxHealth(double health);
 
     /**
@@ -106,7 +102,8 @@ public interface Damageable extends Entity {
 
     /**
      * Resets the max health to the original amount.
-     * @deprecated does not actually function
+     * 
+     * @deprecated Does not function
      */
     @Deprecated
     void resetMaxHealth();
