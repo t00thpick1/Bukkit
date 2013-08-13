@@ -40,6 +40,13 @@ public class AttributeModifier {
         return modifierType;
     }
 
+    /**
+     * Creates a new AttributeModifier with the given values
+     * @param identifier
+     * @param value
+     * @param type
+     * @return a new AttributeModifier
+     */
     public static AttributeModifier createAttributeModifier(AttributeIdentifier identifier, double value, AttributeModifierType type) {
         return new AttributeModifier(identifier, value, type);
     }
