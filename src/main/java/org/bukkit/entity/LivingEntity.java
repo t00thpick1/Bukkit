@@ -399,6 +399,7 @@ public interface LivingEntity extends Entity, Damageable {
      */
     public boolean setLeashHolder(Entity holder);
 
+    /**
      * Gets the attribute of the specified type
      * 
      * @return the {@link Attribute} of the type supplied or null if not present
