@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.bukkit.Location;
+import org.bukkit.attributes.Attribute;
+import org.bukkit.attributes.AttributeIdentifier;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.potion.PotionEffect;
@@ -396,4 +398,10 @@ public interface LivingEntity extends Entity, Damageable {
      * @return whether the operation was successful
      */
     public boolean setLeashHolder(Entity holder);
+
+     * Gets the attribute of the specified type
+     * 
+     * @return the {@link Attribute} of the type supplied or null if not present
+     */
+    public Attribute getAttribute(AttributeIdentifier identifier);
 }
