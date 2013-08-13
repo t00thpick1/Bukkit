@@ -230,7 +230,7 @@ public interface Horse extends Animals, Vehicle, InventoryHolder, Tameable {
     public void setMaxDomestication(int level);
 
     /**
-     * Gets the jump strength of this horse.
+     * Gets the jump strength of this horse after Item Attributes are applied.
      * <p>
      * Jump strength defines how high the horse can jump. A higher jump strength
      * increases how high a jump will go.
@@ -248,8 +248,32 @@ public interface Horse extends Animals, Vehicle, InventoryHolder, Tameable {
      * above 2.
      *
      * @param strength jump strength for this horse
+     * @deprecated use {@link #setBaseJumpStrength(double)} instead
      */
+    @Deprecated
     public void setJumpStrength(double strength);
+
+    /**
+     * Gets the base jump strength of this horse before Item Attributes are applied.
+     * <p>
+     * Jump strength defines how high the horse can jump. A higher jump strength
+     * increases how high a jump will go.
+     *
+     * @return the horse's base jump strength
+     */
+    public double getBaseJumpStrength();
+
+    /**
+     * Sets the base jump strength of this horse before Item Attributes are applied.
+     * <p>
+     * Jump strength defines how high the horse can jump. A higher jump strength
+     * increases how high a jump will go.
+     * <p>
+     * Must be within the range of 0-2
+     *
+     * @param strength the strength to set to
+     */
+    public void setBaseJumpStrength(double strength);
 
     @Override
     public HorseInventory getInventory();

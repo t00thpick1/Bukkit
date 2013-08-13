@@ -67,7 +67,7 @@ public interface Damageable extends Entity {
     void _INVALID_setHealth(int health);
 
     /**
-     * Gets the maximum health this entity has.
+     * Gets the maximum health this entity has with item attributes applied.
      *
      * @return Maximum health
      */
@@ -89,8 +89,28 @@ public interface Damageable extends Entity {
      * Note: An entity with a health bar ({@link Player}, {@link EnderDragon}, {@link Wither}, etc...} will have their bar scaled accordingly.
      *
      * @param health amount of health to set the maximum to
+     * @deprecated use {@link #setBaseMaxHealth(double)}
      */
+    @Deprecated
     void setMaxHealth(double health);
+
+    /**
+     * Gets the entities base maximum health before item attributes are applied.
+     *
+     * @return base maximum health
+     */
+    double getBaseMaxHealth();
+
+    /**
+     * Sets the entities base maximum health before item attributes are applied.
+     * <p>
+     * If the health of the entity is above {@link #getMaxHealth()} it will be set to that value.
+     * <p>
+     * Note: An entity with a health bar ({@link EnderDragon}, {@link Wither}, etc...} will have their bar scaled accordingly.
+     *
+     * @param health amount of health to set the base value to
+     */
+    void setBaseMaxHealth(double health);
 
     /**
      * This method exists for legacy reasons to provide backwards

@@ -5,8 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.bukkit.Location;
-import org.bukkit.attributes.Attribute;
-import org.bukkit.attributes.AttributeIdentifier;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.potion.PotionEffect;
@@ -400,9 +398,93 @@ public interface LivingEntity extends Entity, Damageable {
     public boolean setLeashHolder(Entity holder);
 
     /**
-     * Gets the attribute of the specified type
+     * Gets the movement speed of the entity with item attributes applied
      * 
-     * @return the {@link Attribute} of the type supplied or null if not present
+     * @return movement speed
      */
-    public Attribute getAttribute(AttributeIdentifier identifier);
+    public double getMovementSpeed();
+
+    /**
+     * Gets the base movement speed of the entity before item attributes are applied
+     * 
+     * @return base movement speed
+     */
+    public double getBaseMovementSpeed();
+
+    /**
+     * Sets the base movement speed of the entity before item attributes are applied
+     * 
+     * @param speed the amount to set it to
+     */
+    public void setBaseMovementSpeed(double amount);
+
+    /**
+     * Gets the attack damage of the entity with item attributes applied
+     * 
+     * @return attack damage
+     */
+    public double getAttackDamage();
+
+    /**
+     * Gets the base attack damage of the entity before item attributes are applied
+     * 
+     * @return base attack damage
+     */
+    public double getBaseAttackDamage();
+
+    /**
+     * Sets the base attack damage of the entity before item attributes are applied
+     * 
+     * @param value the value to set attack damage to
+     */
+    public void setBaseAttackDamage(double value);
+
+    /**
+     * Gets the knockback resistance of the entity with item attributes applied
+     * 
+     * @return knockback resistance
+     */
+    public double getKnockbackResistance();
+
+    /**
+     * Gets the base knockback resistance of the entity before item attributes are applied
+     * 
+     * @return base knockback resistance
+     */
+    public double getBaseKnockbackResistance();
+
+    /**
+     * Sets the base knockback resistance of the entity before item attributes are applied
+     * <p>
+     * Max value of 1.0
+     * 
+     * @param resistance the value to set knockback resistance to
+     */
+    public void setBaseKnockbackResistance(double resistance);
+
+
+    /**
+     * Gets the follow range of the entity with item attributes applied
+     * 
+     * @return the follow range, or 0 for Players
+     */
+    public double getFollowRange();
+
+    /**
+     * Gets the base follow range of the entity before item attributes are applied
+     * 
+     * @return the base follow range, or 0 for Players
+     */
+    public double getBaseFollowRange();
+
+    /**
+     * Sets the base follow range of the entity before item attributes are applied
+     * <p>
+     * Max value of 2048
+     * 
+     * Will not have any effect on players
+     * 
+     * @param range the value to set follow range to
+     */
+    public void setBaseFollowRange(double range);
 }
