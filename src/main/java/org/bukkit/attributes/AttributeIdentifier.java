@@ -6,7 +6,7 @@ public enum AttributeIdentifier {
      * The maximum health of this mob; determines the highest Health they may
      * be healed to.
      */
-    MAX_HEALTH("generic.maxHealth"),
+    MAX_HEALTH,
     /**
      * The range in blocks within which a mob will
      * target an entity to track. 
@@ -14,47 +14,28 @@ public enum AttributeIdentifier {
      * entity.
      * Max value of 2048.
      */
-    FOLLOW_RANGE("generic.followRange"),
+    FOLLOW_RANGE,
     /**
      * Resistance to knockback from attacks, explosions, and projectiles.
      * Max value of 1.0.
      */
-    KNOCKBACK_RESISTANCE("generic.knockbackResistance"),
+    KNOCKBACK_RESISTANCE,
     /**
      * The movement speed of the mob
      */
-    MOVEMENT_SPEED("generic.movementSpeed"),
+    MOVEMENT_SPEED,
     /**
      * Damage dealt by attacks, in half-hearts.
      */
-    ATTACK_DAMAGE("generic.attackDamage"),
+    ATTACK_DAMAGE,
     /**
      * Horse jump strength 
      * Max value of 2.0.
      */
-    JUMP_STRENGTH("horse.jumpStrength"),
+    JUMP_STRENGTH,
     /**
      * Chance that a zombie will spawn another zombie when attacked.
      * Max value of 1.0
      */
-    SPAWN_REINFORCEMENTS("zombie.spawnReinforcements");
-
-    private final String name;
-
-    private AttributeIdentifier(String identityString) {
-        this.name = identityString;
-    }
-
-    public String getIdentityString() {
-        return name;
-    }
-
-    public static AttributeIdentifier getByName(String identityString) {
-        for (AttributeIdentifier identifier : AttributeIdentifier.values()) {
-            if (identifier.getIdentityString().equals(identityString)) {
-                return identifier;
-            }
-        }
-        return null;
-    }
+    SPAWN_REINFORCEMENTS;
 }
