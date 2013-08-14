@@ -67,7 +67,8 @@ public interface Damageable extends Entity {
     void _INVALID_setHealth(int health);
 
     /**
-     * Gets the maximum health this entity has with item attributes and other effects applied.
+     * Gets the maximum health this entity has with item attributes and other
+     * effects applied.
      *
      * @return Maximum health
      */
@@ -84,9 +85,11 @@ public interface Damageable extends Entity {
     /**
      * Sets the maximum health this entity can have.
      * <p>
-     * If the health of the entity is above the value provided it will be set to that value.
+     * If the health of the entity is above the value provided it will be set
+     * to that value.
      * <p>
-     * Note: An entity with a health bar ({@link Player}, {@link EnderDragon}, {@link Wither}, etc...} will have their bar scaled accordingly.
+     * Note: An entity with a health bar ({@link Player}, {@link EnderDragon},
+     * {@link Wither}, etc...} will have their bar scaled accordingly.
      *
      * @param health amount of health to set the maximum to
      * @deprecated use {@link #setBaseMaxHealth(double)}
@@ -95,18 +98,22 @@ public interface Damageable extends Entity {
     void setMaxHealth(double health);
 
     /**
-     * Gets the entities base maximum health before item attributes and other effects are applied.
+     * Gets the entities base maximum health before item attributes and other
+     * effects are applied.
      *
      * @return base maximum health
      */
     double getBaseMaxHealth();
 
     /**
-     * Sets the entities base maximum health before item attributes and other effects are applied.
+     * Sets the entities base maximum health before item attributes and other
+     * effects are applied.
      * <p>
-     * If the health of the entity is above {@link #getMaxHealth()} it will be set to that value.
+     * If the health of the entity is above {@link #getMaxHealth()} it will be
+     * set to that value.
      * <p>
-     * Note: An entity with a health bar ({@link EnderDragon}, {@link Wither}, etc...} will have their bar scaled accordingly.
+     * Note: An entity with a health bar ({@link EnderDragon}, {@link Wither},
+     * etc...} will have their bar scaled accordingly.
      *
      * @param health amount of health to set the base value to
      */

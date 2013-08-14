@@ -132,7 +132,8 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
     public UUID addAttributeModifier(AttributeModifier modifier);
 
     /**
-     * Removes the attribute modifier associated with the specified UUID from this item meta.
+     * Removes the attribute modifier associated with the specified UUID from
+     * this item meta.
      *
      * @param uuid the UUID of the modifier to remove
      * @return the AttributeModifier removed
