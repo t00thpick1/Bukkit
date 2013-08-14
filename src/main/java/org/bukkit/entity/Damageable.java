@@ -67,7 +67,7 @@ public interface Damageable extends Entity {
     void _INVALID_setHealth(int health);
 
     /**
-     * Gets the maximum health this entity has with item attributes applied.
+     * Gets the maximum health this entity has with item attributes and other effects applied.
      *
      * @return Maximum health
      */
@@ -95,14 +95,14 @@ public interface Damageable extends Entity {
     void setMaxHealth(double health);
 
     /**
-     * Gets the entities base maximum health before item attributes are applied.
+     * Gets the entities base maximum health before item attributes and other effects are applied.
      *
      * @return base maximum health
      */
     double getBaseMaxHealth();
 
     /**
-     * Sets the entities base maximum health before item attributes are applied.
+     * Sets the entities base maximum health before item attributes and other effects are applied.
      * <p>
      * If the health of the entity is above {@link #getMaxHealth()} it will be set to that value.
      * <p>

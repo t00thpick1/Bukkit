@@ -398,65 +398,76 @@ public interface LivingEntity extends Entity, Damageable {
     public boolean setLeashHolder(Entity holder);
 
     /**
-     * Gets the movement speed of the entity with item attributes applied
+     * Gets the movement speed of the entity with item attributes and other
+     * effects applied.
      * 
      * @return movement speed
      */
     public double getMovementSpeed();
 
     /**
-     * Gets the base movement speed of the entity before item attributes are applied
+     * Gets the base movement speed of the entity before item attributes and
+     * other effects are applied.
      * 
      * @return base movement speed
      */
     public double getBaseMovementSpeed();
 
     /**
-     * Sets the base movement speed of the entity before item attributes are applied
+     * Sets the base movement speed of the entity before item attributes and
+     * other effects are applied.
+     * <p>
+     * For Players, use {@link Player#setWalkSpeed(float)}
      * 
      * @param speed the amount to set it to
      */
     public void setBaseMovementSpeed(double amount);
 
     /**
-     * Gets the attack damage of the entity with item attributes applied
+     * Gets the attack damage of the entity with item attributes and other
+     * effects applied.
      * 
      * @return attack damage
      */
     public double getAttackDamage();
 
     /**
-     * Gets the base attack damage of the entity before item attributes are applied
+     * Gets the base attack damage of the entity before item attributes and
+     * other effects are applied.
      * 
      * @return base attack damage
      */
     public double getBaseAttackDamage();
 
     /**
-     * Sets the base attack damage of the entity before item attributes are applied
+     * Sets the base attack damage of the entity before item attributes and
+     * other effects are applied.
      * 
      * @param value the value to set attack damage to
      */
     public void setBaseAttackDamage(double value);
 
     /**
-     * Gets the knockback resistance of the entity with item attributes applied
+     * Gets the knockback resistance of the entity with item attributes and
+     * other effects applied.
      * 
      * @return knockback resistance
      */
     public double getKnockbackResistance();
 
     /**
-     * Gets the base knockback resistance of the entity before item attributes are applied
+     * Gets the base knockback resistance of the entity before item attributes
+     * and other effects are applied.
      * 
      * @return base knockback resistance
      */
     public double getBaseKnockbackResistance();
 
     /**
-     * Sets the base knockback resistance of the entity before item attributes are applied
+     * Sets the base knockback resistance of the entity before item attributes
+     * and other effects are applied.
      * <p>
-     * Max value of 1.0
+     * Max value of 1.0.
      * 
      * @param resistance the value to set knockback resistance to
      */
@@ -464,23 +475,26 @@ public interface LivingEntity extends Entity, Damageable {
 
 
     /**
-     * Gets the follow range of the entity with item attributes applied
+     * Gets the follow range of the entity with item attributes and other
+     * effects applied.
      * 
      * @return the follow range, or 0 for Players
      */
     public double getFollowRange();
 
     /**
-     * Gets the base follow range of the entity before item attributes are applied
+     * Gets the base follow range of the entity before item attributes and
+     * other effects are applied.
      * 
      * @return the base follow range, or 0 for Players
      */
     public double getBaseFollowRange();
 
     /**
-     * Sets the base follow range of the entity before item attributes are applied
+     * Sets the base follow range of the entity before item attributes and
+     * other effects are applied.
      * <p>
-     * Max value of 2048
+     * Max value of 2048.
      * 
      * Will not have any effect on players
      * 

@@ -31,4 +31,30 @@ public interface Zombie extends Monster {
      * @param flag Whether the zombie is a villager
      */
     public void setVillager(boolean flag);
+
+    /**
+     * Gets the Spawn Reinforcement Chance of this zombie after Item
+     * Attributes and other effects are applied.
+     *
+     * @return the spawn reinforcement chance
+     */
+    public double getSpawnReinforcementsChance();
+
+    /**
+     * Gets the base Spawn Reinforcement Chance of this zombie before Item
+     * Attributes and other effects are applied.
+     *
+     * @return the base spawn reinforcement chance
+     */
+    public double getBaseSpawnReinforcementsChance();
+
+    /**
+     * Sets the base Spawn Reinforcement Chance of this zombie before Item
+     * Attributes and other effects are applied.
+     * <P>
+     * Range between 0 and 1.
+     *
+     * @param chance the base spawn reinforcement chance
+     */
+    public void setBaseSpawnReinforcementsChance(double chance);
 }
