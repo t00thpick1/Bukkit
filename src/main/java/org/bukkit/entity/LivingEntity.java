@@ -416,8 +416,6 @@ public interface LivingEntity extends Entity, Damageable {
     /**
      * Sets the base movement speed of the entity before item attributes and
      * other effects are applied.
-     * <p>
-     * For Players, use {@link Player#setWalkSpeed(float)}
      * 
      * @param speed the amount to set it to
      */

@@ -35,6 +35,9 @@ public interface Zombie extends Monster {
     /**
      * Gets the Spawn Reinforcement Chance of this zombie after Item
      * Attributes and other effects are applied.
+     * <p>
+     * Note: Only applicable when world difficulty and spawn conditions allow
+     * for it
      *
      * @return the spawn reinforcement chance
      */
@@ -43,6 +46,9 @@ public interface Zombie extends Monster {
     /**
      * Gets the base Spawn Reinforcement Chance of this zombie before Item
      * Attributes and other effects are applied.
+     * <p>
+     * Note: Only applicable when world difficulty and spawn conditions allow
+     * for it
      *
      * @return the base spawn reinforcement chance
      */
@@ -53,6 +59,9 @@ public interface Zombie extends Monster {
      * Attributes and other effects are applied.
      * <P>
      * Range between 0 and 1.
+     * <p>
+     * Note: Only applicable when world difficulty and spawn conditions allow
+     * for it
      *
      * @param chance the base spawn reinforcement chance
      */
