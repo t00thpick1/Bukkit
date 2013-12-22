@@ -1,5 +1,6 @@
 package org.bukkit.command.debug;
 
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -15,6 +16,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.util.StringUtil;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import com.google.common.collect.ImmutableList;
 
@@ -68,31 +70,33 @@ public class DebugCommand extends BukkitCommand {
         return true;
     }
 
-    private void debug(Debugable debugable, CommandSender sender) {
-        String url = createGist(debugable);
-        sender.sendMessage(ChatColor.GRAY + url);
-    }
-
-    private String createGist(Debugable debugable) {
+    private void debug(Debuggable debuggable, CommandSender sender) {
         JSONObject json = new JSONObject();
-        json.put("description", "Debug Information for: " + debugable.getName());
+        json.put("description", "Debug Report for: " + debuggable.getName());
         json.put("public", true);
         JSONObject files = new JSONObject();
         JSONObject file = new JSONObject();
-        file.put("content", debugable.debug());
-        files.put(debugable.getName() + ".debug", file);
+        file.put("content", debuggable.debug());
+        files.put(debuggable.getName() + ".dbg", file);
         json.put("files", files);
-        return ((JSONObject) ((JSONObject) post(json).get("files")).get(debugable.getName() + ".debug")).get("raw_url").toString();
+        try {
+            sender.sendMessage(ChatColor.GRAY + ((JSONObject) ((JSONObject) post(json).get("files")).get(debuggable.getName() + ".dbg")).get("raw_url").toString());
+            return;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        sender.sendMessage(ChatColor.GRAY + "A problem has occurred while generating debug report");
     }
 
-    private JSONObject post(JSONObject post) {
+    private JSONObject post(JSONObject post) throws IOException, ParseException {
         URL url;
         HttpURLConnection connection = null;
         try {
             url = new URL("https://api.github.com/gists");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
             connection.setUseCaches(false);
             connection.setDoInput(true);
@@ -106,9 +110,6 @@ public class DebugCommand extends BukkitCommand {
             connection.getInputStream().close();
 
             return (JSONObject) response;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
         } finally {
             if (connection != null) {
                 connection.disconnect();

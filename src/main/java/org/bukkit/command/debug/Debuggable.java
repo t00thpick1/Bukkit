@@ -1,6 +1,6 @@
 package org.bukkit.command.debug;
 
-public interface Debugable {
+public interface Debuggable {
 
     public String debug();
 

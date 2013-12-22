@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 import org.bukkit.Server;
 import org.bukkit.command.TabExecutor;
-import org.bukkit.command.debug.Debugable;
+import org.bukkit.command.debug.Debuggable;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.generator.ChunkGenerator;
 
@@ -17,7 +17,7 @@ import com.avaje.ebean.EbeanServer;
  * <p>
  * The use of {@link PluginBase} is recommended for actual Implementation
  */
-public interface Plugin extends TabExecutor, Debugable {
+public interface Plugin extends TabExecutor, Debuggable {
     /**
      * Returns the folder that the plugin data's files are located in. The
      * folder may not yet exist.
