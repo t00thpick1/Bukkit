@@ -34,7 +34,7 @@ public class DebugCommand extends BukkitCommand {
         if (!testPermission(sender)) return true;
 
         if (args.length == 0) {
-            debug(Bukkit.getServer(), sender);
+            generateDebugReport(Bukkit.getServer(), sender);
         } else {
             StringBuilder name = new StringBuilder();
 
@@ -49,7 +49,7 @@ public class DebugCommand extends BukkitCommand {
             String pluginName = name.toString();
             Plugin exactPlugin = Bukkit.getPluginManager().getPlugin(pluginName);
             if (exactPlugin != null) {
-                debug(exactPlugin, sender);
+                generateDebugReport(exactPlugin, sender);
                 return true;
             }
 
@@ -57,7 +57,7 @@ public class DebugCommand extends BukkitCommand {
             pluginName = pluginName.toLowerCase();
             for (Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
                 if (plugin.getName().toLowerCase().contains(pluginName)) {
-                    debug(plugin, sender);
+                    generateDebugReport(plugin, sender);
                     found = true;
                 }
             }
@@ -70,27 +70,42 @@ public class DebugCommand extends BukkitCommand {
         return true;
     }
 
-    private void debug(Debuggable debuggable, CommandSender sender) {
-        JSONObject json = new JSONObject();
-        json.put("description", "Debug Report for: " + debuggable.getName());
-        json.put("public", true);
-        JSONObject files = new JSONObject();
+    static void generateDebugReport(final Debuggable debuggable, final CommandSender sender) {
+        final String fileName = debuggable.getName() + ".dbg";
+
         JSONObject file = new JSONObject();
         file.put("content", debuggable.debug());
-        files.put(debuggable.getName() + ".dbg", file);
+
+        JSONObject files = new JSONObject();
+        files.put(fileName, file);
+
+        final JSONObject json = new JSONObject();
         json.put("files", files);
-        try {
-            sender.sendMessage(ChatColor.GRAY + ((JSONObject) ((JSONObject) post(json).get("files")).get(debuggable.getName() + ".dbg")).get("raw_url").toString());
-            return;
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        sender.sendMessage(ChatColor.GRAY + "A problem has occurred while generating debug report");
+        json.put("description", "Debug Report for: " + debuggable.getName());
+
+        sender.sendMessage(ChatColor.GRAY + "Generating debug report.");
+
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    JSONObject response = post(json);
+
+                    String url = ((JSONObject) ((JSONObject) response.get("files")).get(fileName)).get("raw_url").toString();
+
+                    sender.sendMessage(ChatColor.GRAY + url);
+                    return;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                sender.sendMessage(ChatColor.GOLD + "A problem has occurred while generating debug report");
+            }
+        }).start();
     }
 
-    private JSONObject post(JSONObject post) throws IOException, ParseException {
+    static JSONObject post(JSONObject post) throws IOException, ParseException {
         URL url;
         HttpURLConnection connection = null;
         try {
@@ -103,7 +118,6 @@ public class DebugCommand extends BukkitCommand {
             connection.setDoOutput(true);
 
             connection.getOutputStream().write(post.toJSONString().getBytes());
-            connection.getOutputStream().flush();
             connection.getOutputStream().close();
 
             JSONObject response = (JSONObject) new JSONParser().parse(new InputStreamReader(connection.getInputStream()));
