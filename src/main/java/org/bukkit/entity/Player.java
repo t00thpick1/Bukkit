@@ -788,4 +788,11 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @see Player#setHealthScaled(boolean)
      */
     public double getHealthScale();
+
+    /**
+     * Respawns the player.
+     *
+     * @throws IllegalStateException if player is alive
+     */
+    public void respawn() throws IllegalStateException;
 }

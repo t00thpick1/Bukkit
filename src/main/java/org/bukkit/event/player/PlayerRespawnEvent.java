@@ -3,15 +3,17 @@ package org.bukkit.event.player;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 
 /**
- * Called when a player respawns.
+ * Called when a player would respawn.
  */
-public class PlayerRespawnEvent extends PlayerEvent {
+public class PlayerRespawnEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private Location respawnLocation;
     private final boolean isBedSpawn;
+    private boolean cancelled;
 
     public PlayerRespawnEvent(final Player respawnPlayer, final Location respawnLocation, final boolean isBedSpawn) {
         super(respawnPlayer);
@@ -47,6 +49,14 @@ public class PlayerRespawnEvent extends PlayerEvent {
      */
     public boolean isBedSpawn() {
         return this.isBedSpawn;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(boolean cancel) {
+        this.cancelled = cancel;
     }
 
     @Override

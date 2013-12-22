@@ -14,6 +14,7 @@ public class PlayerDeathEvent extends EntityDeathEvent {
     private int newLevel = 0;
     private int newTotalExp = 0;
     private boolean keepLevel = false;
+    private boolean respawn = false;
 
     public PlayerDeathEvent(final Player player, final List<ItemStack> drops, final int droppedExp, final String deathMessage) {
         this(player, drops, droppedExp, 0, deathMessage);
@@ -134,5 +135,13 @@ public class PlayerDeathEvent extends EntityDeathEvent {
      */
     public void setKeepLevel(boolean keepLevel) {
         this.keepLevel = keepLevel;
+    }
+
+    public void setRespawnImmediately(boolean respawn) {
+        this.respawn  = respawn;
+    }
+
+    public boolean getRespawnImmediately() {
+        return respawn;
     }
 }
