@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.Server;
+import org.bukkit.command.debug.DebugCommand;
 import org.bukkit.command.defaults.*;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
@@ -77,6 +78,7 @@ public class SimpleCommandMap implements CommandMap {
         register("bukkit", new ReloadCommand("reload"));
         register("bukkit", new PluginsCommand("plugins"));
         register("bukkit", new TimingsCommand("timings"));
+        register("bukkit", new DebugCommand("debug"));
     }
 
     /**

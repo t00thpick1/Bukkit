@@ -14,6 +14,7 @@ import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.command.debug.Debugable;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.server.ServerListPingEvent;
@@ -38,7 +39,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 /**
  * Represents a server implementation
  */
-public interface Server extends PluginMessageRecipient {
+public interface Server extends PluginMessageRecipient, Debugable {
 
     /**
      * Used for all administrative messages, such as an operator using a

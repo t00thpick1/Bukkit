@@ -7,6 +7,11 @@ package org.bukkit.plugin;
  * org.bukkit.plugin.java.JavaPlugin}
  */
 public abstract class PluginBase implements Plugin {
+
+    public String debug() {
+        return "Unknown Plugin implementation\n";
+    }
+
     @Override
     public final int hashCode() {
         return getName().hashCode();

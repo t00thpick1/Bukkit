@@ -19,6 +19,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.PluginBase;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginLoader;
@@ -369,6 +370,43 @@ public abstract class JavaPlugin extends PluginBase {
 
     public final Logger getLogger() {
         return logger;
+    }
+
+    public String debug() {
+        StringBuilder debug = new StringBuilder();
+        PluginDescriptionFile desc = this.getDescription();
+        debug.append("Java Plugin").append("\n");
+        debug.append("Name: " + getName()).append("\n");
+        if (!desc.getAuthors().isEmpty()) {
+            if (desc.getAuthors().size() == 1) {
+                debug.append("Author: " + desc.getAuthors().get(0)).append("\n");
+            } else {
+                debug.append("Authors: ");
+                List<String> authors = desc.getAuthors();
+                for (int i = 0; i < authors.size(); i++) {
+                    if (i > 0) {
+                        if (i < authors.size() - 1) {
+                            debug.append(", ");
+                        } else {
+                            debug.append(" and ");
+                        }
+                    }
+                    debug.append(authors.get(i));
+                }
+                debug.append("\n");
+            }
+            
+        }
+        debug.append("Enabled: " + isEnabled()).append("\n");
+        debug.append("Registered Commands:").append("\n");
+        for (String command : desc.getCommands().keySet()) {
+            debug.append(" -" + command).append("\n");
+        }
+        debug.append("Registered Permissions:").append("\n");
+        for (Permission permission : desc.getPermissions()) {
+            debug.append(" -" + permission.getName()).append("\n");
+        }
+        return debug.toString();
     }
 
     @Override
