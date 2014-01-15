@@ -10,8 +10,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Note;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.Sound;
 import org.bukkit.Statistic;
+import org.bukkit.Sound;
 import org.bukkit.WeatherType;
 import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.Conversable;
@@ -326,8 +326,17 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * Awards this player the given achievement
      *
      * @param achievement Achievement to award
+     * @throws IllegalArgumentException if the player does not have the parent
+     *     achievement
      */
     public void awardAchievement(Achievement achievement);
+
+    /**
+     * Gets whether this player has the given achievement
+     *
+     * @return whether the player has the achievement
+     */
+    public boolean hasAchievement(Achievement achievement);
 
     /**
      * Increments the given statistic for this player
@@ -341,16 +350,51 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param statistic Statistic to increment
      * @param amount Amount to increment this statistic by
+     * @throws IllegalArgumentException if the statistic requires an
+     *     additional parameter
      */
     public void incrementStatistic(Statistic statistic, int amount);
+
+    /**
+     * Sets the given statistic for this player
+     *
+     * @param statistic Statistic to set
+     * @param newValue The value to set this statistic to
+     * @throws IllegalArgumentException if the statistic requires an
+     *     additional parameter
+     */
+    public void setStatistic(Statistic statistic, int newValue);
+
+    /**
+     * Gets the value of the given statistic for this player
+     *
+     * @param statistic Statistic to check
+     * @return the value of the given statistic
+     * @throws IllegalArgumentException if the statistic requires an
+     *     additional parameter
+     */
+    public int getStatistic(Statistic statistic);
 
     /**
      * Increments the given statistic for this player for the given material
      *
      * @param statistic Statistic to increment
      * @param material Material to offset the statistic with
+     * @throws IllegalArgumentException if the given parameter is not valid
+     *     for the statistic
      */
     public void incrementStatistic(Statistic statistic, Material material);
+
+    /**
+     * Gets the value of the given statistic for this player
+     *
+     * @param statistic Statistic to check
+     * @param material Material offset of the statistic
+     * @return the value of the given statistic
+     * @throws IllegalArgumentException if the given parameter is not valid
+     *     for the statistic
+     */
+    public int getStatistic(Statistic statistic, Material material);
 
     /**
      * Increments the given statistic for this player for the given material
@@ -358,8 +402,64 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param statistic Statistic to increment
      * @param material Material to offset the statistic with
      * @param amount Amount to increment this statistic by
+     * @throws IllegalArgumentException if the given parameter is not valid
+     *     for the statistic
      */
     public void incrementStatistic(Statistic statistic, Material material, int amount);
+
+    /**
+     * Sets the given statistic for this player for the given material
+     *
+     * @param statistic Statistic to set
+     * @param material Material to offset the statistic with
+     * @param newValue The value to set this statistic to
+     * @throws IllegalArgumentException if the given parameter is not valid
+     *     for the statistic
+     */
+    public void setStatistic(Statistic statistic, Material material, int newValue);
+
+    /**
+     * Increments the given statistic for this player for the given entity
+     *
+     * @param statistic Statistic to increment
+     * @param entityType EntityType to offset the statistic with
+     * @throws IllegalArgumentException if the given parameter is not valid
+     *     for the statistic
+     */
+    public void incrementStatistic(Statistic statistic, EntityType entityType);
+
+    /**
+     * Gets the value of the given statistic for this player
+     *
+     * @param statistic Statistic to check
+     * @param entityType EntityType offset of the statistic
+     * @return the value of the given statistic
+     * @throws IllegalArgumentException if the given parameter is not valid
+     *     for the statistic
+     */
+    public int getStatistic(Statistic statistic, EntityType entityType);
+
+    /**
+     * Increments the given statistic for this player for the given entity
+     *
+     * @param statistic Statistic to increment
+     * @param entityType EntityType to offset the statistic with
+     * @param amount Amount to increment this statistic by
+     * @throws IllegalArgumentException if the given parameter is not valid
+     *     for the statistic
+     */
+    public void incrementStatistic(Statistic statistic, EntityType entityType, int amount);
+
+    /**
+     * Sets the given statistic for this player for the given entity
+     *
+     * @param statistic Statistic to set
+     * @param entityType EntityType to offset the statistic with
+     * @param newValue The value to set this statistic to
+     * @throws IllegalArgumentException if the given parameter is not valid
+     *     for the statistic
+     */
+    public void setStatistic(Statistic statistic, EntityType entityType, int newValue);
 
     /**
      * Sets the current time on the player's client. When relative is true the
